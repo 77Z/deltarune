@@ -1,0 +1,3 @@
+const beginningAttack = {
+    "playAnimation": "fightBegin"
+};

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DELTARUNE</title>
+    <link rel="stylesheet" href="../fonts/fonts.css">
+    <style>
+
+        * {
+            cursor: url(../img/cursors/mouse.png), default;
+            outline: none;
+        }
+    
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: #000000;
+        }
+
+        .overlap {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .sans {
+            height: 300px;
+            width: 150px;
+            background-image: url("../img/sans-still.png");
+            background-repeat: no-repeat;
+            background-size: 150px;
+            image-rendering: pixelated;
+            position: absolute;
+            bottom: -180px;
+            transform: rotate(12deg);
+            left: -20px;
+        }
+
+        .temmie {
+            position: absolute;
+            height: 150px;
+            width: 150px;
+            background: transparent;
+            background-image: url("../img/temmie-single.png");
+            background-repeat: no-repeat;
+            background-size: 150px;
+            image-rendering: pixelated;
+            bottom: -20px;
+            left: 120px;
+            transform: rotate(5deg);
+
+        }
+
+        .kris {
+            position: absolute;
+            width: 152px;
+            height: 296px;
+            background: transparent;
+            bottom: 0;
+            left: 50%;
+            margin-left: -76px;
+            background-image: url(../img/kris-title.png);
+            background-size: 152px;
+            image-rendering: pixelated;
+        }
+
+        .play {
+            position: absolute;
+            top: 20px;
+            background: black;
+            border-radius: 0px;
+            cursor: url(../img/cursors/mouse-click.png), pointer;
+            border: 3px solid #ffffff;
+            font-size: 40px;
+            color: white;
+            font-family: 'Determination';
+            width: 150px;
+            left: 50%;
+            margin-left: -75px;
+        }
+
+    </style>
+
+    <script>
+    
+        window.onload = function() {
+            setTimeout(function() {
+                document.getElementById("o").style.opacity = "1";
+            }, 12000);
+
+            document.getElementById("play").addEventListener("click", function() {
+                document.getElementById("o").style.opacity = "0";
+                setTimeout(function() {
+                    console.log("load 2nd page");
+                    //document.location.href = "index.html";
+                }, 1000);
+            });
+        };
+    
+    </script>
+</head>
+<body>
+    <video autoplay>
+        <source src="../vid/deltarune.mp4" type="video/mp4">
+    </video>
+    <div class="overlap" id="o">
+        <div class="sans"></div>
+        <div class="temmie"></div>
+        <div class="kris"></div>
+
+        <button id="play" class="play">
+            PLAY
+        </button>
+    </div>
+</body>
+</html>
