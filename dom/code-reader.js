@@ -12,4 +12,10 @@ window.onload = function() {
         frames: 5,
         loop: true
     });
+
+    _(document).keydown("e", () => {
+        //deltaruneAnimation()
+    });
+
+    deltaruneAnimation().bottomWrite("* LET THE GAMES BEGIN!", 1000);
 };
