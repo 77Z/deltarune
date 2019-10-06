@@ -1,0 +1,6 @@
+Ver 1.0.3
+
+    * Re-did animation system (Faster and no more blinking)
+    * Added a parsable language for making attacks
+    * Added Speach system
+    * Added Kris head, health, and nameplate

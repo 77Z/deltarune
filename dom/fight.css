@@ -41,3 +41,51 @@ body {
     font-family: 'Determination';
     color: #ffffff;
 }
+
+.kris-options {
+    position: fixed;
+    bottom: 25%;
+    width: 33.33333333333333%;
+    height: 70px;
+    background: black;
+}
+
+.kris-options .face {
+    position: absolute;
+    left: 20px;
+    height: 60px;
+    top: 5px;
+    background: white;
+    width: 60px;
+    background: url(../img/ui/kris/face.png);
+    background-repeat: no-repeat;
+    background-size: 60px;
+    image-rendering: pixelated;
+}
+
+.kris-options .nameplate {
+    left: 100px;
+    position: absolute;
+    background: url(../img/ui/kris/name.png);
+    height: 100%;
+    width: 100px;
+    background-repeat: no-repeat;
+    background-size: 80px;
+    image-rendering: pixelated;
+    top: 15px;
+}
+
+.health-bar {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    height: 20px;
+    width: 45%;
+    background: red;
+}
+
+.health-bar-amount {
+    background: #00A2E8;
+    width: 60%;
+    height: 100%;
+}

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <header name = "Access-Control-Allow-Origin" value = "*" /> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -98,6 +99,84 @@
                 document.getElementById("o").style.opacity = "1";
             }, 12000);
 
+            setTimeout(function() {
+
+                var showBars = false,
+                    audio = document.getElementById("aud");
+
+
+                    audio.crossOrigin = "anonymous";
+                if (showBars) {
+                    audio.crossOrigin = "anonymous";
+                    audio.play();
+                    var context = new AudioContext();
+                    var src = context.createMediaElementSource(audio);
+                    var analyser = context.createAnalyser();
+
+                    var canvas = document.getElementById("canvas");
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
+                    var ctx = canvas.getContext("2d");
+
+                    src.connect(analyser);
+                    analyser.connect(context.destination);
+
+                    analyser.fftSize = 256;
+
+                    var bufferLength = analyser.frequencyBinCount;
+                    console.log(`%c[Deltarune Audio Engine] %c${bufferLength}`, 'color: violet', 'color: normal');
+
+                    var dataArray = new Uint8Array(bufferLength);
+
+                    var WIDTH = canvas.width;
+                    var HEIGHT = canvas.height;
+
+                    var barWidth = (WIDTH / bufferLength) * 2.5;
+                    var barHeight;
+                    var x = 0;
+
+                    function DeltaruneAnimation() {
+                        const de = {};
+                        de.renderFrame = function() {
+                            requestAnimationFrame(this.renderFrame);
+
+                            x = 0;
+
+                            analyser.getByteFrequencyData(dataArray);
+
+                            ctx.fillStyle = "#000";
+                            ctx.fillRect(0, 0, WIDTH, HEGIHT);
+
+                            for (var i = 0; i < bufferLength; i++) {
+                                barHeight = dataArray[i];
+
+                                var r = barHeight + (25 * (i/bufferLength));
+                                var g = 250 * (i/bufferLength);
+                                var b = 50;
+
+                                ctx.fillStyle = "rgb(" + r + "," + g + "," + b +")";
+                                ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
+
+                                x += barWidth + 1;
+                            }
+                        }
+                    }
+
+                    audio.play();
+                    DeltaruneAnimation().renderFrame();
+                } else {
+                    audio.play();
+                }
+
+                //var audioElmt = document.createElement("audio");
+                //var src = document.createElement("source");
+                //src.src = "../mus/friendship.ogg";
+                //src.type = "audio/ogg";
+                //audioElmt.setAttribute("autoplay", "autoplay");
+                //audioElmt.appendChild(src);
+                //document.body.appendChild(audioElmt);
+            }, 13000);
+
             document.getElementById("play").addEventListener("click", function() {
                 document.getElementById("o").style.opacity = "0";
                 setTimeout(function() {
@@ -113,6 +192,7 @@
     <video autoplay>
         <source src="../vid/deltarune.mp4" type="video/mp4">
     </video>
+    <canvas id="canvas"></canvas>
     <div class="overlap" id="o">
         <div class="sans"></div>
         <div class="temmie"></div>
@@ -122,5 +202,6 @@
             PLAY
         </button>
     </div>
+    <audio id="aud" src="../mus/prejoker.ogg"></audio>
 </body>
 </html>
