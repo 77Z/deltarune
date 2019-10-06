@@ -22,6 +22,33 @@ window.onload = function() {
         });
     });
 
+    _(document).keydown("w", () => {
+        this.deltaruneAnimation().loadAnim({
+            charactor: "kris",
+            animName: "kris-sword-put-away",
+            frames: 8,
+            loop: true
+        });
+    });
+
+    _(document).keydown("q", () => {
+        this.deltaruneAnimation().loadAnim({
+            charactor: "kris",
+            animName: "kris-sword-take-out",
+            frames: 11,
+            loop: false
+        });
+    });
+
+    _(document).keydown("r", () => {
+        this.deltaruneAnimation().loadAnim({
+            charactor: "kris",
+            animName: "kris-defend",
+            frames: 4,
+            loop: true
+        });
+    });
+
     //this.deltaruneAnimation().bottomWrite("* WEEE", 999999);
 
     //load Beginning Attack
