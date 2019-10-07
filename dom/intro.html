@@ -144,9 +144,7 @@
                     var barHeight;
                     var x = 0;
 
-                    function DeltaruneAnimation() {
-                        const de = {};
-                        de.renderFrame = function() {
+                    function renderFrame() {
                             requestAnimationFrame(this.renderFrame);
 
                             x = 0;
@@ -169,10 +167,9 @@
                                 x += barWidth + 1;
                             }
                         }
-                    }
 
                     audio.play();
-                    DeltaruneAnimation().renderFrame();
+                    renderFrame();
                 } else {
                     audio.play();
                 }
