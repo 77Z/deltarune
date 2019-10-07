@@ -18,6 +18,8 @@
     </title>
     <link rel="stylesheet" href="../fonts/fonts.css">
     <script src="../lib/vq.js"></script>
+    <script src="77zSoundEngine.js"></script>
+    <script src="deltarune.js"></script>
     <script src="animation.js"></script>
     <script src="attacks.js"></script>
     <script src="code-reader.js"></script>
@@ -27,10 +29,17 @@
     <div class="jevil" id="jevil"></div>
     <div class="kris" id="kris"></div>
     <div class="text-display" id="td"></div>
-    <div class="kris-options">
+    <div class="kris-options" id="krisPlate">
         <div class="face"></div>
         <div class="nameplate"></div>
-        <div class="health-bar"><div class="health-bar-amount"></div></div>
+        <div class="health-bar"><div class="health-bar-amount" id="kris-health"></div></div>
+    </div>
+    <div class="kris-famisd">
+        <img src="../img/ui/options/fight.png" id="kris-1" height="70" style="image-rendering: pixelated">
+        <img src="../img/ui/options/act.png" id="kris-2" height="70" style="image-rendering: pixelated">
+        <img src="../img/ui/options/item.png" id="kris-3" height="70" style="image-rendering: pixelated">
+        <img src="../img/ui/options/spare.png" id="kris-4" height="70" style="image-rendering: pixelated">
+        <img src="../img/ui/options/defend.png" id="kris-5" height="70" style="image-rendering: pixelated">
     </div>
 </body>
 </html>

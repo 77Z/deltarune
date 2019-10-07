@@ -1,4 +1,8 @@
 window.onload = function() {
+
+    deltarune().setTurn().kris();
+    this.se77z().startTrack("../mus/joker.ogg");
+
     //deltaruneAnimation().loadAnim({
     //    charactor: "jevil",
     //    animName: "jevil-idle",
@@ -47,6 +51,14 @@ window.onload = function() {
             frames: 4,
             loop: true
         });
+    });
+
+    _(document).keydown("ArrowRight", () => {
+        this.deltarune().selectOption().next();
+    });
+
+    _(document).keydown("ArrowLeft", () => {
+        this.deltarune().selectOption().back();
     });
 
     //this.deltaruneAnimation().bottomWrite("* WEEE", 999999);

@@ -48,6 +48,9 @@ body {
     width: 33.33333333333333%;
     height: 70px;
     background: black;
+    transition: 0.1s;
+    left: 0;
+    z-index: 501;
 }
 
 .kris-options .face {
@@ -86,6 +89,20 @@ body {
 
 .health-bar-amount {
     background: #00A2E8;
-    width: 60%;
+    width: 100%;
     height: 100%;
+}
+
+.kris-famisd {
+    background: #000000;
+    position: fixed;
+    bottom: 25%;
+    left: 0;
+    width: 33.33333333333333%;
+    height: 70px;
+    z-index: 500;
+}
+
+.fight {
+    
 }
