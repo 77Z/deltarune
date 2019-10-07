@@ -4,6 +4,10 @@
 
 
 
+_(document).keydown("z", () => {
+    deltarune().select();
+});
+
 
 
 /*

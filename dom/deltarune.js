@@ -106,5 +106,17 @@ function deltarune() {
         return drso;
     };
 
+    dr.select = function() {
+        if (selectedOption == 1) {
+            //Fight
+            deltaruneAnimation().loadAnim({
+                charactor: "kris",
+                animName: "kris-fight",
+                frames: 7,
+                loop: false
+            });
+        }
+    };
+
     return dr;
 }
