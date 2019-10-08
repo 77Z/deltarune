@@ -104,5 +104,17 @@ body {
 }
 
 .fight {
-    
+
+}
+
+.susie {
+    position: fixed;
+    top: 250px;
+    left: 20px;
+    height: 200px;
+    width: 200px;
+    background: transparent;
+    background-repeat: no-repeat;
+    background-size: 150px;
+    image-rendering: pixelated;
 }
