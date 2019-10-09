@@ -25,6 +25,20 @@ function deltarune() {
 
     };
 
+    dr.stopTurn = function() {
+        const drsturn = {};
+
+        drsturn.kris = function() {
+            var krisNamePlate = document.getElementById('krisPlate');
+
+            currentPlayerTurn = null;
+
+            krisNamePlate.style.bottom = "25%";
+        }
+
+        return drsturn;
+    }
+
     dr.health = function() {
         const drhealth = {};
 

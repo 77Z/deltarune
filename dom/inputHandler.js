@@ -5,7 +5,11 @@
 
 
 _(document).keydown("z", () => {
-    deltarune().select();
+    deltarune().setTurn().kris();
+});
+
+_(document).keydown("a", () => {
+    deltarune().stopTurn().kris();
 });
 
 

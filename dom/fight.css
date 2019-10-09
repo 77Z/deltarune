@@ -118,3 +118,14 @@ body {
     background-size: 150px;
     image-rendering: pixelated;
 }
+
+canvas {
+    background: black;
+    border: 5px solid lime;
+    position: absolute;
+    left: 50%;
+    top: 200px;
+    margin-left: -50px;
+    transform: scale(0.0) rotate(-180deg);
+    transition: 0.5s;
+}

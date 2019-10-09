@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BATTLE TEST</title>
+    <style>
+    
+        canvas {
+            border: 10px solid lime;
+            background: #000000;
+            transform: scale(2.0);
+            position: absolute;
+            top: 200px;
+            left: 200px;
+            image-rendering: pixelated;
+        }
+
+    </style>
+    <script src="../lib/vq.js"></script>
+</head>
+<body>
+    <canvas width="200" height="200"></canvas>
+    <script>
+    
+        let img = new Image();
+        img.src = "../img/dodge/soul.png";
+        img.onload = function() {
+            window.requestAnimationFrame(init);
+        };
+
+        const SCALE = 2;
+
+        let canvas = document.querySelector("canvas");
+        let ctx = canvas.getContext("2d");
+
+        //function init() {
+        //    //ctx.drawImage(img, 0, 0, 18, 18, 0, 0, 18 * SCALE, 18 * SCALE);
+        //    ctx.drawImage(img, 0, 0, 18, 18, 0, 0, 18, 18);
+        //}
+
+        const MOVEMENT_SPEED = 2;
+        var positionX = 0;
+        var positionY = 0;
+
+        var WIDTH = 18;
+        var HEIGHT = 18;
+        var FPS = 12;
+
+        function drawFrame(x, y) {
+            ctx.drawImage(img, 0, 0, WIDTH, HEIGHT,
+                            x, y, WIDTH, HEIGHT);
+        }
+        let keyPresses = {};
+        window.addEventListener("keydown", (event) => {
+            keyPresses[event.key] = true;
+        })
+        window.addEventListener("keyup", (event) => {
+            keyPresses[event.key] = false;
+        })
+
+
+
+        function moveSoul(deltaX, deltaY) {
+            //positionX += deltaX;
+            //positionY += deltaY;
+
+            //  ^^^^ OLD ^^^^
+
+            if (positionX + deltaX > 0 && positionX + 18 + deltaX < canvas.width) {
+                positionX += deltaX;
+            }
+            if (positionY + deltaY > 0 && positionY + 18 + deltaY < canvas.height) {
+                positionY += deltaY;
+            }
+        }
+
+
+        function init() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            //_(document).keydown("ArrowUp", () => {
+            //    positionY -= 1;
+            //    console.log("UP")
+            //});
+//
+            //_(document).keydown("ArrowDown", () => {
+            //    positionY += 1;
+            //    console.log("DOWN")
+            //});
+
+
+
+            if (keyPresses.w) {
+                moveSoul(0, -MOVEMENT_SPEED);
+            } else if (keyPresses.s) {
+                moveSoul(0, MOVEMENT_SPEED);
+            }
+            
+            if (keyPresses.d) {
+                moveSoul(MOVEMENT_SPEED, 0);
+            } else if (keyPresses.a) {
+                moveSoul(-MOVEMENT_SPEED, 0);
+            }
+
+
+
+
+
+            drawFrame(positionX, positionY);
+            //setTimeout(function() {
+                window.requestAnimationFrame(init);
+            //}, 1000 / FPS);
+        }
+
+    </script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 window.onload = function() {
 
-    deltarune().setTurn().kris();
+    //deltarune().setTurn().kris();
     this.se77z().startTrack("../mus/joker.ogg");
 
     //deltaruneAnimation().loadAnim({
