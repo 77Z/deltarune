@@ -129,3 +129,53 @@ canvas {
     transform: scale(0.0) rotate(-180deg);
     transition: 0.5s;
 }
+
+.susie-options {
+    position: fixed;
+    bottom: 25%;
+    width: 33.33333333333333%;
+    height: 70px;
+    background: black;
+    transition: 0.1s;
+    left: 33.33333333333333%;
+    z-index: 501;
+}
+
+.susie-options .face {
+    position: absolute;
+    left: 20px;
+    height: 60px;
+    top: 5px;
+    background: white;
+    width: 60px;
+    background: url(../img/ui/susie/face.png);
+    background-repeat: no-repeat;
+    background-size: 60px;
+    image-rendering: pixelated;
+}
+
+.susie-options .nameplate {
+    left: 100px;
+    position: absolute;
+    background: url(../img/ui/susie/name.png);
+    height: 100%;
+    width: 100px;
+    background-repeat: no-repeat;
+    background-size: 80px;
+    image-rendering: pixelated;
+    top: 15px;
+}
+
+.susie-health-bar-color {
+    background: darkmagenta;
+}
+
+.susie-famisd {
+    background: #000000;
+    position: fixed;
+    bottom: 25%;
+    left: 0;
+    width: 33.33333333333333%;
+    height: 70px;
+    z-index: 500;
+}

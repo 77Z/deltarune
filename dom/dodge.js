@@ -1,3 +1,5 @@
+var isDodging = false;
+
 let img = new Image();
 img.src = "../img/dodge/soul.png";
 img.onload = function() {
@@ -15,8 +17,8 @@ let ctx = canvas.getContext("2d");
 //}
 
 const MOVEMENT_SPEED = 2;
-var positionX = 0;
-var positionY = 0;
+var positionX = 50;
+var positionY = 50;
 
 var WIDTH = 18;
 var HEIGHT = 18;
@@ -65,21 +67,19 @@ function init() {
 
 
 
-    if (keyPresses.ArrowUp) {
-        moveSoul(0, -MOVEMENT_SPEED);
-    } else if (keyPresses.ArrowDown) {
-        moveSoul(0, MOVEMENT_SPEED);
+    if (isDodging) {
+        if (keyPresses.ArrowUp) {
+            moveSoul(0, -MOVEMENT_SPEED);
+        } else if (keyPresses.ArrowDown) {
+            moveSoul(0, MOVEMENT_SPEED);
+        }
+        
+        if (keyPresses.ArrowRight) {
+            moveSoul(MOVEMENT_SPEED, 0);
+        } else if (keyPresses.ArrowLeft) {
+            moveSoul(-MOVEMENT_SPEED, 0);
+        }
     }
-    
-    if (keyPresses.ArrowRight) {
-        moveSoul(MOVEMENT_SPEED, 0);
-    } else if (keyPresses.ArrowLeft) {
-        moveSoul(-MOVEMENT_SPEED, 0);
-    }
-
-
-
-
 
     drawFrame(positionX, positionY);
     //setTimeout(function() {
@@ -102,13 +102,17 @@ function deltaruneFightSystem() {
         var canvas = document.getElementById("arena");
 
         canvas.style.transform = "scale(2) rotate(0deg)";
+
+        isDodging = true;
     };
 
     dfs.stopAttack = function() {
         var canvas = document.getElementById("arena");
 
         canvas.style.transform = "scale(0) rotate(-180deg)";
-    }
+
+        isDodging = false;
+    };
 
     return dfs;
 }

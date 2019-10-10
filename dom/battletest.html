@@ -41,8 +41,8 @@
         //}
 
         const MOVEMENT_SPEED = 2;
-        var positionX = 0;
-        var positionY = 0;
+        var positionX = canvas.width / 2 - 9;
+        var positionY = canvas.height / 2 - 9;
 
         var WIDTH = 18;
         var HEIGHT = 18;
@@ -51,6 +51,14 @@
         function drawFrame(x, y) {
             ctx.drawImage(img, 0, 0, WIDTH, HEIGHT,
                             x, y, WIDTH, HEIGHT);
+        }
+
+        function createProjectile(x, y, angle, force) {
+            let spade = new Image();
+            spade.src = "../img/dodge/jevil-spade.png";
+            img.onload = function() {
+                var projectile = ctx.drawImage(spade, 0, 0, 36, 34, x, y, 36, 34);
+            }
         }
         let keyPresses = {};
         window.addEventListener("keydown", (event) => {
@@ -106,7 +114,7 @@
 
 
 
-
+            createProjectile(10, 10)
             drawFrame(positionX, positionY);
             //setTimeout(function() {
                 window.requestAnimationFrame(init);

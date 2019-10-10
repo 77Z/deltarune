@@ -21,6 +21,10 @@ function deltarune() {
             krisNamePlate.style.bottom = "calc(25% + 70px)";
         };
 
+        drturn.susie = function() {
+            var susieNamePlate = document.getElementById("susiePlate");
+        };
+
         return drturn;
 
     };
