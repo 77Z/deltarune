@@ -1,0 +1,43 @@
+UEE HEE HEE, THE KEY, THE KEY.
+
+A MARVELLOUS FUN IS ABOUT TO BREAK FREE.
+
+WON'T YOU LET YOURSELF OUTSIDE?
+
+select:
+
+Use Key    (Soul)     Do not    -> YOU CAME TOO FAR! YOUR CHOICE HAS RUN OUT! -> DOOR OPENS
+
+ |
+\/
+
+(You put the Door Key in front of the Door.)
+
+(The Door Key created a Door.)
+
+**Walk in
+
+UEE HEE!
+VISITORS, VISITORS!
+NOW WE CAN PLAY, PLAY!
+
+THEN, AFTER YOU, I CAN PLAY WITH EVERYONE ELSE, TOO!
+
+*RALSI * So what are we playing, exactly...?
+
+OH, IT'S JUST A SIMPLE NUMBERS GAME.
+
+WHEN YOUR HP DROPS TO 0, YOU LOSE!
+
+*SUSIE * So that's the kinda game you wanna play, huh...?
+
+*SUSIE TEETH SHOWING * Then, I gotta warn you...
+
+*All fight anims play
+
+*SUSIE DEVILISH TEETH SHOWING * You're dealing with a couple of sharks.
+
+*JEVIL LAUGH * UEE HEE HEE! SHARK-TO-SHARK! I WOULDN'T HAVE IT ANY OTHER WAY
+
+*JEVIL LAUGH CONTINUES * NOW, NOW!!
+LET THE GAMES BEGIN!!

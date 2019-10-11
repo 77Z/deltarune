@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        UEE HEE HEE
+    </title>
+
+    <link rel="stylesheet" href="../fonts/fonts.css">
+
+    
+    <style>
+    
+        body {
+            background: #000000;
+            font-family: 'Determination';
+        }
+
+        .text {
+            position: fixed;
+            bottom: 2%;
+            width: 96%;
+            left: 2%;
+            background: black;
+            border: 3px solid white;
+            height: 330px;
+            font-size: 50px;
+            color: white;
+            image-rendering: pixelated;
+        }
+
+        .charimage {
+            height: 80%;
+            image-rendering: pixelated;
+            position: absolute;
+            top: 10%;
+            left: 10px;
+        }
+
+        .writeBox {
+            position: absolute;
+            left: 30%;
+        }
+
+    </style>
+    <script src="../lib/vq.js"></script>
+    <script src="77zSoundEngine.js"></script>
+
+    <script>
+        var jevilTextProgress = 0;
+
+        window.onload = function() {
+
+            updateMessage();
+
+            _(document).keydown("z", () => {
+                nextBtn();
+            })
+
+            _(document).keydown("Enter", () => {
+                nextBtn();
+            });
+
+            function nextBtn() {
+                _('td').empty();
+                jevilTextProgress++;
+                updateMessage();
+            }
+        };
+
+        function updateMessage() {
+            if (jevilTextProgress == 0) {
+                write("* UEE HEE HEE, THE KEY, THE KEY.");
+            } else if (jevilTextProgress == 1) {
+                write("* A MARVELLOUS FUN IS ABOUT TO BREAK FREE.");
+            } else if (jevilTextProgress == 2) {
+                write("* WON'T YOU LET YOURSELF OUTSIDE?");
+            } else if (jevilTextProgress == 3) {
+                write("(You put the Door Key in front of the Door.)");
+            } else if (jevilTextProgress == 4) {
+                write("(The Door Key created a Door.)");
+            } else if (jevilTextProgress == 5) {
+                write("UEE HEE! VISITORS, VISITORS! NOW WE CAN PLAY, PLAY!");
+            } else if (jevilTextProgress == 6) {
+                write("THEN, AFTER YOU, I CAN PLAY WITH EVERYONE ELSE, TOO!");
+            } else if (jevilTextProgress == 7) {
+                writeTeammate("* So what are we playing, exactly...?", "ralsei", "normal");
+            } else if (jevilTextProgress == 8) {
+                write("* OH, IT'S JUST A SIMPLE NUMBERS GAME.")
+            } else if (jevilTextProgress == 9) {
+                write("* WHEN YOUR HP DROPS TO 0, YOU LOSE!");
+            } else if (jevilTextProgress == 10) {
+                writeTeammate("* So that's the kinda game you wanna play, huh...?", "susie", "normal");
+            } else if (jevilTextProgress == 11) {
+                writeTeammate("* Then, I gotta warn you...", "susie", "showing-teeth");
+            } else if (jevilTextProgress == 12) {
+                writeTeammate("* You're dealing with a couple of sharks.", "susie", "devilish-teeth");
+            } else if (jevilTextProgress == 13) {
+                se77z().startTrack("../mus/jevil/mwahmwahaha.wav");
+                write("* UEE HEE HEE! SHARK-TO-SHARK! I WOULDN'T HAVE IT ANY OTHER WAY");
+            } else if (jevilTextProgress == 14) {
+                se77z().startTrack("../mus/jevil/mwahmwahaha.wav");
+                write("* NOW, NOW!! LET THE GAMES BEGIN!!");
+            } else if (jevilTextProgress == 15) {
+                document.location.href = "fight.html";
+            }
+        }
+    
+    function write(message) {
+        var messageSplit = message.split("");
+        console.log(messageSplit);
+
+        var writeProgress = -1;
+        var messageLength = messageSplit.length;
+        var writeText = setInterval(function() {
+            writeProgress++;
+            if (writeProgress == messageLength - 1) {
+                clearInterval(writeText);
+            }
+
+            //console.log(messageSplit[writeProgress]);
+            //console.log(writeProgress);
+            var td = document.getElementById('td');
+            var singleText = document.createTextNode(messageSplit[writeProgress]);
+            td.appendChild(singleText);
+
+            
+
+            return "hi";
+        }, 20);
+    };
+
+    function writeTeammate(message, char, face) {
+        var messageSplit = message.split("");
+        console.log(messageSplit);
+
+        var writeProgress = -1;
+        var messageLength = messageSplit.length;
+        var td = document.getElementById('td');
+        function createFace() {
+            var faceIMG = document.createElement("img");
+            faceIMG.src = "../img/ui/" + char + "/talking-" + face + ".png";
+            faceIMG.setAttribute('class', 'charimage');
+            td.appendChild(faceIMG);
+        }
+        createFace();
+        var writeBox = document.createElement("div");
+        function createWriteBox() {
+            writeBox.setAttribute("class", "writeBox");
+            td.appendChild(writeBox);
+        }
+        createWriteBox();
+        var writeText = setInterval(function() {
+            writeProgress++;
+            if (writeProgress == messageLength - 1) {
+                clearInterval(writeText);
+            }
+
+            //console.log(messageSplit[writeProgress]);
+            //console.log(writeProgress);
+            var singleText = document.createTextNode(messageSplit[writeProgress]);
+            writeBox.appendChild(singleText);
+
+            
+
+            return "hi";
+        }, 20);
+    };
+
+    </script>
+
+</head>
+<body>
+    <div class="text" id="td"></div>
+</body>
+</html>
