@@ -12,6 +12,22 @@ _(document).keydown("a", () => {
     deltarune().stopTurn().kris();
 });
 
+_(document).keydown("v", () => {
+  deltarune().setTurn().susie();
+});
+
+_(document).keydown("b", () => {
+  deltarune().stopTurn().susie();
+});
+
+_(document).keydown("n", () => {
+  deltarune().setTurn().ralsei();
+});
+
+_(document).keydown("m", () => {
+  deltarune().stopTurn().ralsei();
+});
+
 
 
 /*

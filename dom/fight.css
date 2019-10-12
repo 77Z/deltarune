@@ -167,14 +167,64 @@ canvas {
 }
 
 .susie-health-bar-color {
-    background: darkmagenta;
+    background: #ff00ff;
+}
+
+.ralsei-health-bar-color {
+    background: #00ff00;
 }
 
 .susie-famisd {
     background: #000000;
     position: fixed;
     bottom: 25%;
-    left: 0;
+    left: 33.33333333333333%;
+    width: 33.33333333333333%;
+    height: 70px;
+    z-index: 500;
+}
+
+.ralsei-options {
+    position: fixed;
+    bottom: 25%;
+    width: 33.33333333333333%;
+    height: 70px;
+    background: black;
+    transition: 0.1s;
+    right: 0;
+    z-index: 501;
+}
+
+.ralsei-options .face {
+    position: absolute;
+    left: 20px;
+    height: 60px;
+    top: 5px;
+    background: white;
+    width: 60px;
+    background: url(../img/ui/ralsei/face.png);
+    background-repeat: no-repeat;
+    background-size: 60px;
+    image-rendering: pixelated;
+}
+
+.ralsei-options .nameplate {
+    left: 100px;
+    position: absolute;
+    background: url(../img/ui/ralsei/name.png);
+    height: 100%;
+    width: 100px;
+    background-repeat: no-repeat;
+    background-size: 80px;
+    image-rendering: pixelated;
+    top: 15px;
+}
+
+.ralsei-famisd {
+    background: #000000;
+    position: fixed;
+    bottom: 25%;
+    right: 0;
     width: 33.33333333333333%;
     height: 70px;
     z-index: 500;
