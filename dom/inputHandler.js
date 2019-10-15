@@ -5,29 +5,54 @@
 
 
 _(document).keydown("z", () => {
-    deltarune().setTurn().kris();
+  actionButton();
 });
 
-_(document).keydown("a", () => {
-    deltarune().stopTurn().kris();
+_(document).keydown("Enter", () => {
+  actionButton();
 });
 
-_(document).keydown("v", () => {
-  deltarune().setTurn().susie();
+_(document).keydown("x", () => {
+  backButton();
 });
 
-_(document).keydown("b", () => {
-  deltarune().stopTurn().susie();
+_(document).keydown("Shift", () => {
+  backButton();
 });
 
-_(document).keydown("n", () => {
-  deltarune().setTurn().ralsei();
-});
+function actionButton() {
+  if (currentPlayerTurn !== null) {
+    //Fight Selection
+    if (currentPlayerTurn == "kris") {
+      deltarune().stopTurn().kris();
+      deltarune().setTurn().susie();
+    } else if (currentPlayerTurn == "susie") {
+      deltarune().stopTurn().susie();
+      deltarune().setTurn().ralsei();
+    } else if (currentPlayerTurn == "ralsei") {
+      deltarune().stopTurn().ralsei();
+      deltaruneFightSystem().loadAttack();
+      setTimeout(function() {
+        deltaruneFightSystem().stopAttack();
+        deltarune().setTurn().kris();
+      }, 3000);
+    }
+  }
+}
 
-_(document).keydown("m", () => {
-  deltarune().stopTurn().ralsei();
-});
+function backButton() {
+  if (currentPlayerTurn !== null) {
+    //go back a player
+    if (currentPlayerTurn == "susie") {
+      deltarune().stopTurn().susie();
+      deltarune().setTurn().kris();
+    } else if (currentPlayerTurn == "ralsei") {
+      deltarune().stopTurn().ralsei();
+      deltarune().setTurn().susie();
+    }
+  }
 
+}
 
 
 /*

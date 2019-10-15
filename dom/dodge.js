@@ -28,6 +28,22 @@ function drawFrame(x, y) {
     ctx.drawImage(img, 0, 0, WIDTH, HEIGHT,
                     x, y, WIDTH, HEIGHT);
 }
+
+var projectileForce;
+var projectilePosX;
+var projectilePosY;
+
+function createProjectile(x, y, direction, force) {
+    var spade = new Image(34, 36);
+    spade.src = "../img/dodge/jevil-spade.png";
+    spade.onload = function() {
+        ctx.drawImage(spade, x, y, 34, 36);
+    };
+    projectileForce = force;
+    projectilePosX = x;
+    projectilePosY = y;
+}
+
 let keyPresses = {};
 window.addEventListener("keydown", (event) => {
     keyPresses[event.key] = true;
@@ -55,15 +71,6 @@ function moveSoul(deltaX, deltaY) {
 
 function init() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    //_(document).keydown("ArrowUp", () => {
-    //    positionY -= 1;
-    //    console.log("UP")
-    //});
-//
-    //_(document).keydown("ArrowDown", () => {
-    //    positionY += 1;
-    //    console.log("DOWN")
-    //});
 
 
 
@@ -82,18 +89,23 @@ function init() {
     }
 
     drawFrame(positionX, positionY);
+    createProjectile(10, 10, 10, 10);
+    projectilePosX += 1;
+
     //setTimeout(function() {
         window.requestAnimationFrame(init);
     //}, 1000 / FPS);
+
+    
 }
 
-_(document).keydown("x", () => {
-    deltaruneFightSystem().loadAttack();
-});
-
-_(document).keydown("c", () => {
-    deltaruneFightSystem().stopAttack();
-});
+//_(document).keydown("x", () => {
+//    deltaruneFightSystem().loadAttack();
+//});
+//
+//_(document).keydown("c", () => {
+//    deltaruneFightSystem().stopAttack();
+//});
 
 function deltaruneFightSystem() {
     const dfs = {};

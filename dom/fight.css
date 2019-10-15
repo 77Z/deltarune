@@ -109,13 +109,13 @@ body {
 
 .susie {
     position: fixed;
-    top: 250px;
+    top: 170px;
     left: 20px;
     height: 200px;
     width: 200px;
     background: transparent;
     background-repeat: no-repeat;
-    background-size: 150px;
+    background-size: 170px;
     image-rendering: pixelated;
 }
 
@@ -228,4 +228,16 @@ canvas {
     width: 33.33333333333333%;
     height: 70px;
     z-index: 500;
+}
+
+.ralsei {
+    position: fixed;
+    top: 260px;
+    left: 80px;
+    height: 200px;
+    width: 200px;
+    background: transparent;
+    background-repeat: no-repeat;
+    background-size: 100px;
+    image-rendering: pixelated;
 }
