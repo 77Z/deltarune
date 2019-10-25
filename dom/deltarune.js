@@ -5,9 +5,63 @@
 var currentPlayerTurn = null;
 var selectedOption = 1;
 
+//global charactor health values
+//max by default when fight starts
+
+var krisHealth = 90,
+    krisMaxHealth = 90,
+    susieHealth = 110,
+    susieMaxHealth = 110,
+    ralseiHealth = 70,
+    ralseiMaxHealth = 70;
+
+//                To update variables above use
+//                krisHealth -= <numberToSubtractFromHealth>
+//                                 or
+//                krisHealth += <numberToAddToHealth>
+
 
 function deltarune() {
     const dr = {};
+
+    dr.shake = function(objectID) {
+        if (objectID == undefined) {
+            //shake body
+            //document.body.style.animation = "shake 0.5 infinite";
+            _('body').style('animation', 'shake 0.5 infinite');
+            setTimeout(function() {
+                //document.body.style.animation = "none";
+                _('body').style('animation', 'none');
+            }, 500);
+        }
+    };
+
+    dr.updateHealth = function() {
+        //update all charactors text displays to match variables
+        _('health-text-kris').edit(krisHealth + " / " + krisMaxHealth);
+        _('health-text-susie').edit(susieHealth + " / " + susieMaxHealth);
+        _('health-text-ralsei').edit(ralseiHealth + " / " + ralseiMaxHealth);
+
+        //update all visual health bar displays to the correct percent
+
+        //kris
+        var krisOpOne = krisHealth / krisMaxHealth;
+        var krisOpTwo = krisOpOne * 100;
+
+        _('kris-health').style('width', krisOpTwo + "%");
+
+        //susie
+        var susieOpOne = susieHealth / susieMaxHealth;
+        var susieOpTwo = susieOpOne * 100;
+        
+        _('susie-health').style('width', susieOpTwo + "%");
+
+        //ralsei
+        var ralseiOpOne = ralseiHealth / ralseiMaxHealth;
+        var ralseiOpTwo = ralseiOpOne * 100;
+
+        _('ralsei-health').style('width', ralseiOpTwo + "%");
+    };
 
     dr.setTurn = function() {
 
