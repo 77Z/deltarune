@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="../fonts/fonts.css">
     <script src="../lib/vq.js"></script>
     <script src="77zSoundEngine.js"></script>
+    <script src="logic.js"></script>
     <script src="inputHandler.js"></script>
     <script src="deltarune.js"></script>
     <script src="animation.js"></script>
@@ -32,10 +33,16 @@
     <div class="susie" id="susie"></div>
     <div class="ralsei" id="ralsei"></div>
 
-    <canvas height="120" width="120" id="arena"></canvas>
+    <!--<canvas height="120" width="120" id="arena"></canvas>-->
+
+    <div class="battle-area" id="battle-area">
+        <div class="battle-box" id="battle-box">
+            <div class="heart" id="soul"></div>
+        </div>
+    </div>
 
     <div class="text-display" id="td"></div>
-    <div class="fight-aim-display">
+    <div class="fight-aim-display" style="display: none;">
         <div class="fight-aim-inner">
 
             <div class="kris-face"></div>
@@ -90,6 +97,8 @@
         <img src="../img/ui/options/spare.png" id="ralsei-4" height="70" style="image-rendering: pixelated">
         <img src="../img/ui/options/defend.png" id="ralsei-5" height="70" style="image-rendering: pixelated">
     </div>
+
+    <span id="pos" style="display: none;"></span>
 
 
 

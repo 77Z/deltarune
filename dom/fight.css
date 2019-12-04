@@ -377,3 +377,59 @@ canvas {
     background-size: 80px;
     image-rendering: pixelated;
 }
+
+.battle-area {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: transparent;
+    height: 100%;
+    width: 100%;
+}
+
+.battle-box {
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    background: black;
+    border: 5px solid lime;
+    width: 240px;
+    height: 240px;
+    margin-left: -120px;
+    transition: 0.5s;
+    transform: scale(0.0) rotate(-180deg);
+}
+
+.heart {
+    position: absolute;
+    height: 36px;
+    width: 36px;
+    background: url(../img/dodge/soul.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    image-rendering: pixelated;
+    top: 10px;
+    left: 10px;
+}
+
+.bullet {
+    position: fixed;
+    height: 50px;
+    width: 50px;
+    background: url(../img/dodge/jevil-spade.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    image-rendering: pixelated;
+    top: 20px;
+    left: 20px;
+}
+
+#pos {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    font-family: 'Determination';
+    color: white;
+}

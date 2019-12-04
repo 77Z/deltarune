@@ -24,6 +24,10 @@ var krisHealth = 90,
 function deltarune() {
     const dr = {};
 
+    dr.debug = function() {
+        document.getElementById("pos").style.display = "block";
+    };
+
     dr.shake = function(objectID) {
         if (objectID == undefined) {
             //shake body
@@ -128,13 +132,25 @@ function deltarune() {
     dr.health = function() {
         const drhealth = {};
 
-        drhealth.set = function() {
+        drhealth.add = function() {
             const setChar = {};
 
             setChar.kris = function(healthAmount) {
 
-                document.getElementById("kris-health").style.width = healthAmount + "%";
+                //document.getElementById("kris-health").style.width = healthAmount + "%";
+                krisHealth += healthAmount;
+                deltarune().updateHealth();
 
+            };
+
+            setChar.susie = function(healthAmount) {
+                susieHealth += healthAmount;
+                deltarune().updateHealth();
+            };
+
+            setChar.ralsei = function(healthAmount) {
+                ralseiHealth += healthAmount;
+                deltarune().updateHealth();
             };
 
             return setChar;

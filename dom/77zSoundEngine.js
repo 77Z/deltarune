@@ -7,9 +7,12 @@ function se77z() {
 
     var audio;
 
-    se.startTrack = function(src) {
+    se.startTrack = function(src, loop) {
         audio = new Audio(src);
         audio.play();
+        if (loop) {
+            audio.loop = true;
+        }
         this.log('Track: ' + src + ' Is loaded and playing');
     };
     se.pause = function() {

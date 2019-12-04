@@ -1,7 +1,7 @@
 window.onload = function() {
 
     deltarune().setTurn().kris();
-    this.se77z().startTrack("../mus/joker.ogg");
+    this.se77z().startTrack("../mus/joker.ogg", true);
 
     //deltaruneAnimation().loadAnim({
     //    charactor: "jevil",

@@ -2,6 +2,8 @@
 
 //               - Vince
 
+var attackSequence = 0;
+
 
 
 _(document).keydown("z", () => {
@@ -20,6 +22,10 @@ _(document).keydown("Shift", () => {
   backButton();
 });
 
+_(document).keydown("F2", () => {
+  deltarune().debug();
+});
+
 function actionButton() {
   if (currentPlayerTurn !== null) {
     //Fight Selection
@@ -32,10 +38,24 @@ function actionButton() {
     } else if (currentPlayerTurn == "ralsei") {
       deltarune().stopTurn().ralsei();
       deltaruneFightSystem().loadAttack();
+
+      if (attackSequence == 0) {
+        foePatterns().explode(24);
+        attackSequence++;
+      } else if (attackSequence == 1) {
+        foePatterns().wall();
+        attackSequence++;
+      } else if (attackSequence == 2) {
+        foePatterns().crosshair();
+        attackSequence = 1;
+      }
+
+
+
       setTimeout(function() {
         deltaruneFightSystem().stopAttack();
         deltarune().setTurn().kris();
-      }, 3000);
+      }, 5000);
     }
   }
 }

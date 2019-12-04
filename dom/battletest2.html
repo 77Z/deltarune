@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        Battle Test For Deltarune
+    </title>
+    <style>
+    
+
+        .battle-area {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: black;
+            height: 100%;
+            width: 100%;
+            z-index: 800;
+        }
+
+        .battle-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            background: black;
+            border: 5px solid green;
+            width: 500px;
+            height: 500px;
+            margin-top: -250px;
+            margin-left: -250px;
+        }
+
+        .heart {
+            position: absolute;
+            height: 50px;
+            width: 50px;
+            background: url(../img/dodge/soul.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            image-rendering: pixelated;
+            top: 225px;
+            left: 225px;
+        }
+
+        .bullet {
+            position: fixed;
+            height: 50px;
+            width: 50px;
+            background: url(../img/dodge/jevil-spade.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            image-rendering: pixelated;
+            top: 20px;
+            left: 20px;
+        }
+
+        #pos {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            font-family: sans-serif;
+            color: white;
+        }
+
+    
+    </style>
+    <script>
+        var soul;
+        window.onload = function() {
+            window.requestAnimationFrame(init);
+            soul = document.getElementById("soul");
+            soul.style.left = "225px";
+            soul.style.top = "225px";
+        };
+
+        //Code
+        var MOVEMENT_SPEED = 6;
+        let keyPresses = {};
+        window.addEventListener("keydown", (event) => {
+            keyPresses[event.key] = true;
+        });
+        window.addEventListener("keyup", () => {
+            keyPresses[event.key] = false;
+        });
+
+        function moveSoul(deltaX, deltaY) {
+            var currentX = parseInt(soul.style.left.substr(0, soul.style.left.length - 2));
+            var currentY = parseInt(soul.style.top.substr(0, soul.style.top.length - 2));
+//
+            //soul.style.left = currentX += deltaX + "px";
+            //soul.style.top = currentY += deltaY + "px";
+
+            if (currentX + deltaX > 0 && currentX + 50 + deltaX < 500) {
+                soul.style.left = parseInt(soul.style.left.substr(0, soul.style.left.length - 2)) + deltaX + "px";
+            }
+            if (currentY + deltaY > 0 && currentY + 50 + deltaY < 500) {
+                soul.style.top = parseInt(soul.style.top.substr(0, soul.style.top.length - 2)) + deltaY + "px";
+            }
+        }
+
+        function init() {
+
+
+            if (keyPresses.ArrowUp) {
+                moveSoul(0, -MOVEMENT_SPEED);
+            } else if (keyPresses.ArrowDown) {
+                moveSoul(0, MOVEMENT_SPEED);
+            }
+
+            if (keyPresses.ArrowRight) {
+                moveSoul(MOVEMENT_SPEED, 0);
+            } else if (keyPresses.ArrowLeft) {
+                moveSoul(-MOVEMENT_SPEED, 0);
+            }
+
+            //document.getElementById("pos").innerHTML =
+            //soul.getBoundingClientRect().x + " " +
+            //document.getElementById("testBullet").getBoundingClientRect().x;
+
+
+            window.requestAnimationFrame(init);
+        }
+
+        function foe() {
+            const foe = {};
+
+            foe.createBullet = function(direction, velocity, x, y) {
+                var bullet = document.createElement("div");
+                var bulletId = "bullet" + Math.random().toString().split(".")[1]
+                bullet.setAttribute("class", "bullet");
+                bullet.setAttribute("id", bulletId);
+                bullet.style.left = x + "px";
+                bullet.style.top = y + "px";
+
+
+                if (direction == "up") {
+                    bullet.style.transform = "rotate(-90deg)";
+                } else if (direction == "right") {
+                    //none
+                } else if (direction == "left") {
+                    bullet.style.transform = "rotate(180deg)";
+                } else if (direction == "down") {
+                    bullet.style.transform = "rotate(90deg)";
+                }
+
+                setInterval(function() {
+                    //bullet.style.left = parseInt(document.getElementById(bulletId).style.left.substr(0, document.getElementById(bulletId).style.left.length - 2)) + velocity + "px";
+
+
+                    if (direction == "up") {
+                        bullet.style.top = parseInt(bullet.style.top.substr(0, bullet.style.top.length - 2)) - velocity + "px";
+                    } else if (direction == "right") {
+                        bullet.style.left = parseInt(bullet.style.left.substr(0, bullet.style.left.length - 2)) + velocity + "px";
+                    } else if (direction == "left") {
+                        bullet.style.left = parseInt(bullet.style.left.substr(0, bullet.style.left.length - 2)) - velocity + "px";
+                    } else if (direction == "down") {
+                        bullet.style.top = parseInt(bullet.style.top.substr(0, bullet.style.top.length - 2)) + velocity + "px";
+                    }
+                }, 30);
+
+                document.getElementById('battle-area').appendChild(bullet);
+            };
+
+            return foe;
+        }
+
+        function foePatterns() {
+            const patterns = {};
+
+            patterns.explode = function(velocity) {
+                foe().createBullet("right", velocity, 400, 400);
+                foe().createBullet("left", velocity, 325, 400);
+                foe().createBullet("up", velocity, 360, 350);
+                foe().createBullet("down", velocity, 360, 450);
+            };
+
+            patterns.wall = function() {
+                foe().createBullet("right", 8, 100, 300);
+                foe().createBullet("right", 8, 100, 350);
+                foe().createBullet("right", 8, 100, 400);
+                foe().createBullet("right", 8, 100, 450);
+                foe().createBullet("right", 8, 100, 500);
+                foe().createBullet("right", 8, 100, 550);
+                foe().createBullet("right", 8, 100, 600);
+                foe().createBullet("right", 8, 100, 650);
+
+                setTimeout(function() {
+                    foe().createBullet("right", 8, 100, 200);
+                    foe().createBullet("right", 8, 100, 250);
+                    foe().createBullet("right", 8, 100, 300);
+                    foe().createBullet("right", 8, 100, 350);
+                    foe().createBullet("right", 8, 100, 400);
+                    foe().createBullet("right", 8, 100, 450);
+                    foe().createBullet("right", 8, 100, 500);
+                }, 1000);
+            }
+
+            return patterns;
+        }
+
+
+    </script>
+</head>
+<body>
+    <div class="battle-area" id="battle-area">
+        <!--<div class="bullet" id="testBullet"></div>-->
+        <div class="battle-box" id="battle-box">
+            <div class="heart" id="soul"></div>
+        </div>
+    </div>
+    <span id="pos"></span>
+</body>
+</html>
